@@ -1,0 +1,10 @@
+services:
+  verdaccio:
+    image: verdaccio/verdaccio
+    container_name: upm
+    ports:
+      - "4873:4873"
+    volumes:
+      - ./conf:/verdaccio/conf
+      - ./storage:/verdaccio/storage
+    restart: always
