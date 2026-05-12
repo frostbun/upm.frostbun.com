@@ -5,6 +5,15 @@ auth:
     file: /verdaccio/storage/htpasswd
     max_users: -1
 
+security:
+  api:
+    jwt:
+      sign:
+        expiresIn: 30d
+  web:
+    sign:
+      expiresIn: 7d
+
 uplinks:
   OpenUPM:
     url: https://package.openupm.com/
@@ -15,10 +24,8 @@ packages:
   'org.nuget.*':
     access: $all
     publish: $authenticated
-    unpublish: $authenticated
     proxy: UnityNuGet
   '*':
     access: $all
     publish: $authenticated
-    unpublish: $authenticated
     proxy: OpenUPM

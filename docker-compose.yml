@@ -2,6 +2,7 @@ services:
   verdaccio:
     image: verdaccio/verdaccio
     container_name: upm
+    user: "1000:1000"
     ports:
       - "4873:4873"
     volumes:
