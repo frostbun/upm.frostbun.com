@@ -2,10 +2,10 @@ services:
   verdaccio:
     image: verdaccio/verdaccio
     container_name: upm
-    user: "1000:1000"
+    user: 1000:1000
     ports:
-      - "4873:4873"
+      - 4873:4873
     volumes:
       - ./conf:/verdaccio/conf
       - ./storage:/verdaccio/storage
-    restart: always
+    restart: unless-stopped
