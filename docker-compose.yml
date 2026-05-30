@@ -8,4 +8,5 @@ services:
     volumes:
       - ./conf:/verdaccio/conf
       - ./storage:/verdaccio/storage
+      - ./plugins:/verdaccio/plugins
     restart: unless-stopped

@@ -1,4 +1,5 @@
-storage: /verdaccio/storage/data
+storage: /verdaccio/storage
+plugins: /verdaccio/plugins
 
 auth:
   htpasswd:
@@ -14,6 +15,15 @@ security:
     sign:
       expiresIn: 7d
 
+store:
+  aws-s3-storage:
+    bucket: AWS_S3_BUCKET
+    region: AWS_DEFAULT_REGION
+    endpoint: AWS_S3_ENDPOINT
+    accessKeyId: AWS_ACCESS_KEY_ID
+    secretAccessKey: AWS_SECRET_ACCESS_KEY
+    dynamoTableName: none
+
 uplinks:
   OpenUPM:
     url: https://package.openupm.com/
@@ -21,10 +31,10 @@ uplinks:
     url: https://unitynuget-registry.openupm.com/
 
 packages:
-  'org.nuget.*':
-    access: $all
-    publish: $authenticated
-    proxy: UnityNuGet
+  # 'org.nuget.*':
+  #   access: $all
+  #   publish: $authenticated
+  #   proxy: UnityNuGet
   '*':
     access: $all
     publish: $authenticated
