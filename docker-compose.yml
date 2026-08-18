@@ -1,6 +1,6 @@
 services:
   upm:
-    image: docker.io/verdaccio/verdaccio
+    image: docker.io/verdaccio/verdaccio:latest
     container_name: upm
     user: 1000:1000
     ports:

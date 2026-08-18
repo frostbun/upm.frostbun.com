@@ -1,5 +1,5 @@
 services:
-  verdaccio:
+  upm:
     environment:
       AWS_S3_BUCKET: <AWS_S3_BUCKET>
       AWS_DEFAULT_REGION: <AWS_DEFAULT_REGION>
