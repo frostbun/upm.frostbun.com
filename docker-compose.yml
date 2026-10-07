@@ -7,4 +7,9 @@ services:
       - .env
     ports:
       - 4873:4873
+    volumes:
+      - upm_data:/verdaccio/storage
     restart: unless-stopped
+
+volumes:
+  upm_data:
