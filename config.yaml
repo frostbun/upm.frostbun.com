@@ -1,19 +1,14 @@
-storage: /verdaccio/storage
 plugins: /verdaccio/plugins
 
-auth:
-  htpasswd:
-    file: /verdaccio/storage/htpasswd
-    max_users: -1
+middlewares:
+  github-oauth-ui:
+    enabled: true
 
-security:
-  api:
-    jwt:
-      sign:
-        expiresIn: 30d
-  web:
-    sign:
-      expiresIn: 7d
+auth:
+  github-oauth-ui:
+    client-id: GITHUB_CLIENT_ID
+    client-secret: GITHUB_CLIENT_SECRET
+    token: GITHUB_TOKEN
 
 store:
   aws-s3-storage:
@@ -24,18 +19,27 @@ store:
     secretAccessKey: AWS_SECRET_ACCESS_KEY
     dynamoTableName: none
 
+security:
+  api:
+    jwt:
+      sign:
+        expiresIn: 30d
+  web:
+    sign:
+      expiresIn: 7d
+
 uplinks:
-  OpenUPM:
-    url: https://package.openupm.com/
   UnityNuGet:
     url: https://unitynuget-registry.openupm.com/
+  OpenUPM:
+    url: https://package.openupm.com/
 
 packages:
   # 'org.nuget.*':
   #   access: $all
-  #   publish: $authenticated
+  #   publish: github/org/HNVW
   #   proxy: UnityNuGet
   '*':
     access: $all
-    publish: $authenticated
+    publish: github/org/HNVW
     proxy: OpenUPM
